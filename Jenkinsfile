@@ -18,7 +18,7 @@ pipeline {
     {
       steps
       {
-          attachment = {
+          attachment = "{
             "text": "",
             "fallback": "You are unable to decide",
             "callback_id": "env.APPROVE_PROD",
@@ -37,7 +37,7 @@ pipeline {
                     "type": "button",
                     "value": "NO"
                 }
-                ] }
+                ] }"
           slackSend (channel: "#Builds", color: '#4286f4', message: "Deploy Approval: '${env.JOB_NAME} [${env.BUILD_NUMBER}]'", attachments: '${attachment}' )
             script
             {
