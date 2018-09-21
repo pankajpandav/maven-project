@@ -25,7 +25,9 @@ pipeline {
               {
                 timeout(time:10, unit:'MINUTES')
                 {
-                  env.APPROVE_PROD = input (id: "Deploy Gate", message: "Deploy ${params.project_name}?", ok: 'Deploy')
+                    env.APPROVE_PROD = input message: 'Deploy to Production', ok: 'Continue',
+                    parameters: [choice(name: 'APPROVE_PROD', choices: 'YES\nNO', description: 'Deploy from STAGING to PRODUCTION?')]
+
                    if (env.APPROVE_PROD == 'YES')
                     {
                       env.PROD=true
