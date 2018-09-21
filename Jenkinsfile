@@ -23,9 +23,9 @@ pipeline {
             {
               try
               {
-                timeout(time:30, unit:'MINUTES')
+                timeout(time:10, unit:'MINUTES')
                 {
-                  env.APPROVE_PROD = input slackSend (channel: "#Builds", color: '#4286f4', message: "Deploy Approval: '${env.JOB_NAME} [${env.BUILD_NUMBER}]'", attachments: "[{'text': 'Can you please approve ${env.JOB_NAME} [${env.BUILD_NUMBER}]?','fallback': 'You are unable to decide', 'callback_id': 'env.APPROVE_PROD', 'color': '#3AA3E3', 'attachment_type': 'default', 'actions': [ { 'name': 'approval', 'text': 'Approve', 'type': 'button', 'value': 'YES' }, { 'name': 'approval', 'text': 'Decline', 'type': 'button', 'value': 'NO' }]}]")
+                  env.APPROVE_PROD = input (id: "Deploy Gate", message: "Deploy ${params.project_name}?", ok: 'Deploy')
                    if (env.APPROVE_PROD == 'YES')
                     {
                       env.PROD=true
