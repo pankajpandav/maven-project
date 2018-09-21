@@ -31,6 +31,7 @@ pipeline {
                    if (env.APPROVE_PROD == 'YES')
                     {
                       env.PROD=true
+                      echo "Approved!"
                     }
                     else
                     {
