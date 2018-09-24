@@ -23,7 +23,7 @@ pipeline {
             {
               try
               {
-                  slackSend channel: "#Builds", color: '#4286f4', message: "Deploy Approval: '${env.JOB_NAME} [${env.BUILD_NUMBER}]'", attachments: "[{'text': 'Please approve ${env.JOB_NAME} build number ${env.BUILD_NUMBER} at \"http://localhost:8080/job/${env.JOB_NAME}/${env.BUILD_NUMBER}/input\"', 'color': '#3AA3E3', 'attachment_type': 'default']"
+                  slackSend channel: "#Builds", color: '#4286f4', message: "Deploy Approval: '${env.JOB_NAME} [${env.BUILD_NUMBER}]'", attachments: "[{'text': 'Please approve ${env.JOB_NAME} build number ${env.BUILD_NUMBER} at \"http://localhost:8080/job/${env.JOB_NAME}/${env.BUILD_NUMBER}/input\"', 'color': '#3AA3E3', 'attachment_type': 'default' }]"
                               script {
                                   try {
                                       timeout(time:30, unit:'MINUTES') {
