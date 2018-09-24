@@ -23,7 +23,7 @@ pipeline {
             {
               try
               {
-              slackSend (channel: "#slack-channel", color: '#4286f4', message: "Deploy Approval: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.JOB_DISPLAY_URL})")
+              slackSend (channel: "#slack-channel", color: '#4286f4', message: "Deploy Approval: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}][${env.JOB_DISPLAY_URL}]'")
                               script {
                                   try {
                                       timeout(time:30, unit:'MINUTES') {
